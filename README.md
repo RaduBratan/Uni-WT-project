@@ -1,1 +1,1 @@
-This is my submission for the 2022 Web Techniques course's project at UniBuc FMI.
+This is a project I created for my Web Techniques class at UniBuc FMI.
