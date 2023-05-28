@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+	<title>Vanilla JS Router Test</title>
+	<meta name="title" content="Vanilla JS Router Test">
+	<link rel="stylesheet" href="/styles/index.css" type="text/css">
+	<!-- <noscript>
+		<link rel="stylesheet" href="/styles/index.noscript.css" />
+	</noscript> -->
+</head>
+
+<body>
+	<!-- SECTION: --------------MAIN-------------- -->
+	<main id="landing-page">
+		<div class="bg-image im1"></div>
+		<div class="bg-image im2"></div>
+		<div class="boxes-scene">
+			<div class="box1" id="box-left1">
+				<div class="box-shape b1">
+					<div class="face ft"></div>
+					<div class="face lt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box2" id="box-right1">
+				<div class="box-shape b2">
+					<div class="face ft"></div>
+					<div class="face rt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box1" id="box-left2">
+				<div class="box-shape b1">
+					<div class="face ft"></div>
+					<div class="face lt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box2" id="box-right2">
+				<div class="box-shape b2">
+					<div class="face ft"></div>
+					<div class="face rt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box1" id="box-left3">
+				<div class="box-shape b1">
+					<div class="face ft"></div>
+					<div class="face lt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box2" id="box-right3">
+				<div class="box-shape b2">
+					<div class="face ft"></div>
+					<div class="face rt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box1" id="box-left4">
+				<div class="box-shape b1">
+					<div class="face ft"></div>
+					<div class="face lt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+			<div class="box2" id="box-right4">
+				<div class="box-shape b2">
+					<div class="face ft"></div>
+					<div class="face rt"></div>
+					<div class="face bm"></div>
+				</div>
+			</div>
+		</div>
+		<div id="slideshow-container" class="slideshow-container">
+			<div class="slideshow-wrapper">
+				<div id="chapters-container" class="chapters-container">
+					<div class="chapter">
+						<span class="title white">
+							<p>I am a</p>
+							<h1>Developer</h1>
+						</span>
+					</div>
+					<div class="chapter">
+						<span class="title black">
+							<p>Discover my</p>
+							<h1>Projects</h1>
+						</span>
+					</div>
+					<div class="chapter">
+						<span class="title white">
+							<p>Find out more</p>
+							<h1>About me</h1>
+						</span>
+					</div>
+					<div class="chapter">
+						<span class="title black">
+							<p>Available for</p>
+							<h1>Contact</h1>
+						</span>
+					</div>
+				</div>
+			</div>
+			<span class="arrow-btn-prev-container">
+				<div id="arrow-btn-prev" class="arrow-btn-prev"></div>
+			</span>
+			<span class="arrow-btn-next-container">
+				<div id="arrow-btn-next" class="arrow-btn-next"></div>
+			</span>
+		</div>
+		<span class="counter-btn">1 / 4</span>
+		<a class="open-btn" href="/" onclick="router(event)">Open</a>
+	</main>
+	<main id="routing-page">
+		<div class="content-container"></div>
+	</main>
+
+	<!-- SECTION: --------------UNIVERSAL SLICES-------------- -->
+	<div class="slices-container">
+		<div class="slice"></div>
+		<div class="slice"></div>
+		<div class="slice"></div>
+		<div class="slice"></div>
+		<div class="slice"></div>
+	</div>
+
+	<!-- SECTION: --------------UNIVERSAL ACCESSIBILITY PAGES-------------- -->
+	<div class="bg-text-container">
+		<span class="bg-text-wrapper">
+			<span class="bg-text"></span>
+		</span>
+		<span class="bg-text-wrapper">
+			<span class="bg-text"></span>
+		</span>
+		<span class="bg-text-wrapper">
+			<span class="bg-text"></span>
+		</span>
+	</div>
+	<div class="menu-page">
+		<span class="menu-option">
+			<a class="menu-link" href="/developer" onclick="router(event)">Developer</a>
+		</span>
+		<span class="menu-option">
+			<a class="menu-link" href="/projects" onclick="router(event)">Projects</a>
+		</span>
+		<span class="menu-option">
+			<a class="menu-link" href="/about" onclick="router(event)">About me</a>
+		</span>
+		<span class="menu-option">
+			<a class="menu-link" href="/contact" onclick="router(event)">Contact</a>
+		</span>
+	</div>
+	<div class="language-page">
+		<span class="language-option">
+			<a class="language-link">Romanian</a>
+		</span>
+		<span class="language-option">
+			<a class="language-link">English</a>
+		</span>
+		<span class="language-option">
+			<a class="language-link">French</a>
+		</span>
+		<span class="language-option">
+			<a class="language-link">Italian</a>
+		</span>
+	</div>
+
+	<!-- SECTION: --------------UNIVERSAL DETAILS-------------- -->
+	<a class="logo-btn-container" href="/">
+		<span class="logo-btn">Bratan</span>
+	</a>
+	<a class="description-btn-container" href="#">
+		<span class="description-btn prev"></span>
+		<span class="description-btn curr"></span>
+		<span class="description-btn next"></span>
+	</a>
+	<div class="language-btn-container">
+		<span class="language-btn">⚑ Lang</span>
+	</div>
+	<div class="menu-btn-container">
+		<span class="menu-btn">Menu ☰</span>
+	</div>
+
+	<!-- SECTION: --------------CURSOR-------------- -->
+	<div class="cursor-container">
+		<div class="cursor"></div>
+	</div>
+
+	<!-- SECTION: --------------UNIVERSAL NOSCRIPT-------------- -->
+	<noscript>
+		<main class="ns-slideshow-container">
+			<div class="ns-slideshow-wrapper">
+				<input type="radio" name="switcher" class="switcher" id="developer" checked="checked" />
+				<input type="radio" name="switcher" class="switcher" id="projects" />
+				<input type="radio" name="switcher" class="switcher" id="about" />
+				<input type="radio" name="switcher" class="switcher" id="contact" />
+
+				<div class="ns-controls-container">
+					<label class="ns-control prev" for="contact"></label>
+					<label class="ns-control next" for="projects"></label>
+				</div>
+				<div class="ns-controls-container">
+					<label class="ns-control prev" for="developer"></label>
+					<label class="ns-control next" for="about"></label>
+				</div>
+				<div class="ns-controls-container">
+					<label class="ns-control prev" for="projects"></label>
+					<label class="ns-control next" for="contact"></label>
+				</div>
+				<div class="ns-controls-container">
+					<label class="ns-control prev" for="about"></label>
+					<label class="ns-control next" for="developer"></label>
+				</div>
+
+				<span class="ns-arrow-btn prev"></span>
+				<span class="ns-arrow-btn next"></span>
+
+				<div class="ns-chapters-container">
+					<li class="ns-chapter">
+						<span class="ns-title white">
+							<p>I am a ...</p>
+							<h1>Developer</h1>
+						</span>
+						<a class="ns-open-btn" href="#">Open</a>
+					</li>
+					<li class="ns-chapter">
+						<span class="ns-title black">
+							<p>Discover my ...</p>
+							<h1>Projects</h1>
+						</span>
+						<a class="ns-open-btn" href="#">Open</a>
+					</li>
+					<li class="ns-chapter">
+						<span class="ns-title white">
+							<p>Find out more ...</p>
+							<h1>About me</h1>
+						</span>
+						<a class="ns-open-btn" href="#">Open</a>
+					</li>
+					<li class="ns-chapter">
+						<span class="ns-title black">
+							<p>Available for ...</p>
+							<h1>Contact</h1>
+						</span>
+						<a class="ns-open-btn" href="#">Open</a>
+					</li>
+				</div>
+
+				<div class="ns-bg-duotone-container">
+					<div class="ns-bg-duotone"></div>
+				</div>
+
+				<div class="ns-boxes-scene">
+					<div class="ns-box-shape box1">
+						<div class="face ft"></div>
+						<div class="face lt"></div>
+						<div class="face bm"></div>
+					</div>
+					<div class="ns-box-shape box2">
+						<div class="face ft"></div>
+						<div class="face rt"></div>
+						<div class="face bm"></div>
+					</div>
+				</div>
+
+				<span class="ns-logo-btn">Bratan</span>
+				<span class="ns-description-btn">No JS?</span>
+				<span class="ns-language-btn">⚑ Lang</span>
+				<input type="checkbox" name="activator" class="activator" id="ns-menu-btn" />
+				<label class="ns-menu-btn" for="ns-menu-btn">Menu ☰</label>
+
+				<div class="ns-slices-container">
+					<div class="ns-slice right"></div>
+					<div class="ns-slice right"></div>
+					<div class="ns-slice right"></div>
+					<div class="ns-slice right"></div>
+					<div class="ns-slice right"></div>
+				</div>
+
+				<div class="ns-bg-text-container">
+					<span class="ns-bg-text-wrapper">
+						<span class="ns-bg-text">MenuMenuMenu</span>
+					</span>
+					<span class="ns-bg-text-wrapper">
+						<span class="ns-bg-text">MenuMenuMenu</span>
+					</span>
+					<span class="ns-bg-text-wrapper">
+						<span class="ns-bg-text">MenuMenuMenu</span>
+					</span>
+				</div>
+
+				<nav class="ns-menu-page-container">
+					<ul class="ns-menu-page-wrapper">
+						<li class="ns-menu-option">
+							<a class="ns-menu-link" href="#0">Developer</a>
+						</li>
+						<li class="ns-menu-option">
+							<a class="ns-menu-link" href="#0">Projects</a>
+						</li>
+						<li class="ns-menu-option">
+							<a class="ns-menu-link" href="#0">About me</a>
+						</li>
+						<li class="ns-menu-option">
+							<a class="ns-menu-link" href="#0">Contact</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</main>
+	</noscript>
+
+	<script src="/scripts/views/home.js" type="text/javascript"></script>
+	<script src="/scripts/views/developer.js" type="text/javascript"></script>
+	<script src="/scripts/views/projects.js" type="text/javascript"></script>
+	<script src="/scripts/views/about.js" type="text/javascript"></script>
+	<script src="/scripts/views/contact.js" type="text/javascript"></script>
+	<script src="/scripts/router.js" type="text/javascript"></script>
+</body>
+
+</html>

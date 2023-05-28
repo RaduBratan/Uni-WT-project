@@ -1,0 +1,450 @@
+.keyboard-shape,
+.phone-shape,
+.todolist-shape,
+.abt1-shape,
+.box-shape.b1 {
+	.ct,
+	.ft {
+		background-color: var(--colorDark25); //was: colorLight25
+	}
+	.bk {
+		background-color: var(--colorDark50); //was: color
+	}
+	.lt {
+		background-color: var(--colorDark75); //was: colorDark25
+	}
+	.rt {
+		background-color: var(--color); //was: colorLight25
+	}
+	.tp {
+		background-color: var(--colorDark75); //was: colorDark25
+	}
+	.bm {
+		background-color: var(--colorDark50); //was: color
+	}
+}
+
+.phone-shape {
+	.cr {
+		&.cr-1 {
+			.s0 {
+				background-color: var(--colorLight25);
+			}
+			.s1 {
+				background-color: var(--colorLight20);
+			}
+			.s2 {
+				background-color: var(--colorLight15);
+			}
+			.s3 {
+				background-color: var(--colorLight10);
+			}
+			.s4 {
+				background-color: var(--colorLight05);
+			}
+		}
+		&.cr-2 {
+			.s0 {
+				background-color: var(--colorDark05);
+			}
+			.s1 {
+				background-color: var(--colorDark10);
+			}
+			.s2 {
+				background-color: var(--colorDark15);
+			}
+			.s3 {
+				background-color: var(--colorDark20);
+			}
+			.s4 {
+				background-color: var(--colorDark25);
+			}
+		}
+		&.cr-3 {
+			.s0 {
+				background-color: var(--colorDark25);
+			}
+			.s1 {
+				background-color: var(--colorDark25);
+			}
+			.s2 {
+				background-color: var(--colorDark25);
+			}
+			.s3 {
+				background-color: var(--colorDark25);
+			}
+			.s4 {
+				background-color: var(--colorDark25);
+			}
+		}
+	}
+}
+
+.window-shape,
+.envelope-shape,
+.computer-shape,
+.abt2-shape,
+.box-shape.b2 {
+	.ft,
+	.ft1,
+	.ft2,
+	.ft3 {
+		background-color: var(--colorDark25); //was: colorLight25
+	}
+	.bk,
+	.bk1,
+	.bk2,
+	.bk3 {
+		background-color: var(--colorDark50); //was: color
+	}
+	.lt,
+	.lt1,
+	.lt2,
+	.lt3 {
+		background-color: var(--color); //was: colorLight25
+	}
+	.rt,
+	.rt1,
+	.rt2,
+	.rt3 {
+		background-color: var(--colorDark75); //was: colorDark25
+	}
+	.tp,
+	.tp1,
+	.tp2,
+	.tp3 {
+		background-color: var(--colorDark75); //was: colorDark25
+	}
+	.bm,
+	.bm1,
+	.bm2,
+	.bm3 {
+		background-color: var(--colorDark50); //was: color
+	}
+}
+
+.window-shape {
+	.cr {
+		&.cr-0 {
+			.s0,
+			.s1,
+			.s2 {
+				background-color: var(--colorDark25);
+			}
+		}
+		&.cr-1 {
+			.s0 {
+				background-color: var(--colorDark20);
+			}
+			.s1 {
+				background-color: var(--colorDark10);
+			}
+			.s2 {
+				background-color: var(--colorDark05);
+			}
+		}
+		&.cr-2 {
+			.s0 {
+				background-color: var(--colorLight05);
+			}
+			.s1 {
+				background-color: var(--colorLight10);
+			}
+			.s2 {
+				background-color: var(--colorLight20);
+			}
+		}
+		&.cr-3 {
+			.s0 {
+				background-color: var(--colorLight15);
+			}
+			.s1 {
+				background-color: var(--color);
+			}
+			.s2 {
+				background-color: var(--colorDark15);
+			}
+		}
+	}
+}
+
+/* .flag-shape {
+} */
+
+
+
+
+/*
+	--colorLight25: #4e5da2;
+	--colorLight20: #4d5ca0;
+	--colorLight15: #4c5b9e;
+	--colorLight10: #4c5a9c;
+	--colorLight05: #4b599b;
+
+	--colorLight25: #ffc40d;
+	--colorLight20: #ffc30a;
+	--colorLight15: #ffc308;
+	--colorLight10: #ffc205;
+	--colorLight05: #ffc203;
+
+	--colorLight25: #e0564a;
+	--colorLight20: #df5448;
+	--colorLight15: #df5246;
+	--colorLight10: #df5043;
+	--colorLight05: #de4e41;
+
+	--colorLight25: #00b37f;
+	--colorLight20: #00b07d;
+	--colorLight15: #00ae7b;
+	--colorLight10: #00ab7a;
+	--colorLight05: #00a978;
+*/
+
+
+
+
+/*
+var(--colorLight25): lighten($blue, 2.5%);
+var(--colorLight20): lighten($blue, 2%);
+var(--colorLight15): lighten($blue, 1.5%);
+var(--colorLight10): lighten($blue, 1%);
+var(--colorLight05): lighten($blue, 0.5%);
+var(--colorDark100): darken($blue, 10%);
+var(--colorDark50): darken($blue, 5%);
+var(--colorDark25): darken($blue, 2.5%);
+var(--colorDark20): darken($blue, 2%);
+var(--colorDark15): darken($blue, 1.5%);
+var(--colorDark10): darken($blue, 1%);
+var(--colorDark05): darken($blue, 0.5%);
+
+var(--colorLight25): lighten($green, 2.5%);
+var(--colorLight20): lighten($green, 2%);
+var(--colorLight15): lighten($green, 1.5%);
+var(--colorLight10): lighten($green, 1%);
+var(--colorLight05): lighten($green, 0.5%);
+var(--colorDark100): darken($green, 10%);
+var(--colorDark50): darken($green, 5%);
+var(--colorDark25): darken($green, 2.5%);
+var(--colorDark20): darken($green, 2%);
+var(--colorDark15): darken($green, 1.5%);
+var(--colorDark10): darken($green, 1%);
+var(--colorDark05): darken($green, 0.5%);
+
+var(--colorLight25): lighten($orange, 2.5%);
+var(--colorLight20): lighten($orange, 2%);
+var(--colorLight15): lighten($orange, 1.5%);
+var(--colorLight10): lighten($orange, 1%);
+var(--colorLight05): lighten($orange, 0.5%);
+var(--colorDark100): darken($orange, 10%);
+var(--colorDark50): darken($orange, 5%);
+var(--colorDark25): darken($orange, 2.5%);
+var(--colorDark20): darken($orange, 2%);
+var(--colorDark15): darken($orange, 1.5%);
+var(--colorDark10): darken($orange, 1%);
+var(--colorDark05): darken($orange, 0.5%);
+
+var(--colorLight25): lighten($red, 2.5%);
+var(--colorLight20): lighten($red, 2%);
+var(--colorLight15): lighten($red, 1.5%);
+var(--colorLight10): lighten($red, 1%);
+var(--colorLight05): lighten($red, 0.5%);
+var(--colorDark100): darken($red, 10%);
+var(--colorDark50): darken($red, 5%);
+var(--colorDark25): darken($red, 2.5%);
+var(--colorDark20): darken($red, 2%);
+var(--colorDark15): darken($red, 1.5%);
+var(--colorDark10): darken($red, 1%);
+var(--colorDark05): darken($red, 0.5%);
+*/
+
+/*
+[data-colorset0="colorLight25"] {
+  --colorLight25: #222;
+}
+[data-colorset0="colorLight20"] {
+  --colorLight20: #222;
+}
+[data-colorset0="colorLight15"] {
+  --colorLight15: #222;
+}
+[data-colorset0="colorLight10"] {
+  --colorLight10: #222;
+}
+[data-colorset0="colorLight05"] {
+  --colorLight05: #222;
+}
+[data-colorset0="color"] {
+  --color: #4A5899;
+}
+[data-colorset0="colorDark100"] {
+  --colorDark100: #394477;
+}
+[data-colorset0="colorDark50"] {
+  --colorDark50: #424E88;
+}
+[data-colorset0="colorDark25"] {
+  --colorDark25: #465390;
+}
+[data-colorset0="colorDark20"] {
+  --colorDark20: #475492;
+}
+[data-colorset0="colorDark15"] {
+  --colorDark15: #485594;
+}
+[data-colorset0="colorDark10"] {
+  --colorDark10: #222;
+}
+[data-colorset0="colorDark05"] {
+  --colorDark05: #222;
+}
+[data-colorset0="noncolor1"] {
+  --noncolor1: #222;
+}
+[data-colorset0="noncolor2"] {
+  --noncolor2: #222;
+}
+
+// -- //
+
+[data-colorset1="colorLight25"] {
+  --colorLight25: #222;
+}
+[data-colorset1="colorLight20"] {
+  --colorLight20: #222;
+}
+[data-colorset1="colorLight15"] {
+  --colorLight15: #222;
+}
+[data-colorset1="colorLight10"] {
+  --colorLight10: #222;
+}
+[data-colorset1="colorLight05"] {
+  --colorLight05: #222;
+}
+[data-colorset1="color"] {
+  --color: #222;
+}
+[data-colorset1="colorDark100"] {
+  --colorDark100: #222;
+}
+[data-colorset1="colorDark50"] {
+  --colorDark50: #222;
+}
+[data-colorset1="colorDark25"] {
+  --colorDark25: #222;
+}
+[data-colorset1="colorDark20"] {
+  --colorDark20: #222;
+}
+[data-colorset1="colorDark15"] {
+  --colorDark15: #222;
+}
+[data-colorset1="colorDark10"] {
+  --colorDark10: #222;
+}
+[data-colorset1="colorDark05"] {
+  --colorDark05: #222;
+}
+[data-colorset1="noncolor1"] {
+  --noncolor1: #222;
+}
+[data-colorset1="noncolor2"] {
+  --noncolor2: #222;
+}
+
+// -- //
+
+[data-colorset2="colorLight25"] {
+  --colorLight25: #222;
+}
+[data-colorset2="colorLight20"] {
+  --colorLight20: #222;
+}
+[data-colorset2="colorLight15"] {
+  --colorLight15: #222;
+}
+[data-colorset2="colorLight10"] {
+  --colorLight10: #222;
+}
+[data-colorset2="colorLight05"] {
+  --colorLight05: #222;
+}
+[data-colorset2="color"] {
+  --color: #222;
+}
+[data-colorset2="colorDark100"] {
+  --colorDark100: #222;
+}
+[data-colorset2="colorDark50"] {
+  --colorDark50: #222;
+}
+[data-colorset2="colorDark25"] {
+  --colorDark25: #222;
+}
+[data-colorset2="colorDark20"] {
+  --colorDark20: #222;
+}
+[data-colorset2="colorDark15"] {
+  --colorDark15: #222;
+}
+[data-colorset2="colorDark10"] {
+  --colorDark10: #222;
+}
+[data-colorset2="colorDark05"] {
+  --colorDark05: #222;
+}
+[data-colorset2="noncolor1"] {
+  --noncolor1: #222;
+}
+[data-colorset2="noncolor2"] {
+  --noncolor2: #222;
+}
+
+// -- //
+
+[data-colorset3="colorLight25"] {
+  --colorLight25: #222;
+}
+[data-colorset3="colorLight20"] {
+  --colorLight20: #222;
+}
+[data-colorset3="colorLight15"] {
+  --colorLight15: #222;
+}
+[data-colorset3="colorLight10"] {
+  --colorLight10: #222;
+}
+[data-colorset3="colorLight05"] {
+  --colorLight05: #222;
+}
+[data-colorset3="color"] {
+  --color: #222;
+}
+[data-colorset3="colorDark100"] {
+  --colorDark100: #222;
+}
+[data-colorset3="colorDark50"] {
+  --colorDark50: #222;
+}
+[data-colorset3="colorDark25"] {
+  --colorDark25: #222;
+}
+[data-colorset3="colorDark20"] {
+  --colorDark20: #222;
+}
+[data-colorset3="colorDark15"] {
+  --colorDark15: #222;
+}
+[data-colorset3="colorDark10"] {
+  --colorDark10: #222;
+}
+[data-colorset3="colorDark05"] {
+  --colorDark05: #222;
+}
+[data-colorset3="noncolor1"] {
+  --noncolor1: #222;
+}
+[data-colorset3="noncolor2"] {
+  --noncolor2: #222;
+}
+*/
