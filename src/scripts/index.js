@@ -1,50 +1,26 @@
 /* eslint-disable no-undef */
+
 // SECTION --------------GLOBAL--------------
 
 "use strict";
-
-const routes = [
-	{
-		path: "/",
-		// eslint-disable-next-line quotes
-		data: home
-	},
-	{
-		path: "/developer",
-		// eslint-disable-next-line no-undef
-		data: developer
-	},
-	{
-		path: "/projects",
-		// eslint-disable-next-line no-undef
-		data: projects
-	},
-	{
-		path: "/about",
-		// eslint-disable-next-line no-undef
-		data: about
-	},
-	{
-		path: "/contact",
-		// eslint-disable-next-line no-undef
-		data: contact
-	}
-];
 
 const colors = ["#4A5899", "#FFC100", "#DE4C3F", "#00A676"];
 const colorsDark50 = ["#424E88", "#E6AE00", "#DA3829", "#008D64"];
 const colorsExtra = ["#FFF1CE", "#222", "#FFF1CE", "#222"];
 const optionsDesc = ["Hello!", "Est 15", "Skills", "E-mail"];
 const optionsBgText = ["DeveloperDeveloperDeveloper", "ProjectsProjectsProjects", "AboutmeAboutmeAboutme", "ContactContactContact", "LanguageLanguageLanguage", "MenuMenuMenu"];
-const optionsLinks = ["/developer", "/projects", "/about", "/contact"];
 const timeChangeSlide = 640;
 const timeToggleSlice = 640;
 const timeTogglePage = 640;
 const timeWaitForBgText = 160;
 
-let j = 0;
 let k = 0;
-const historyArray = [];
+let j = localStorage.getItem("j");
+if (k === null) {
+	j = 0;
+} else {
+	j = parseInt(k);
+}
 
 const slideshowContainer = document.getElementById("slideshow-container");
 const title = document.querySelectorAll(".title");
@@ -57,9 +33,10 @@ const landingPage = document.getElementById("landing-page");
 const routingPage = document.getElementById("routing-page");
 
 const contentContainer = document.querySelector(".content-container");
-/* const contentContainer = document.createElement("div");
-contentContainer.className = "content-container"; */
-// const contentTitle = document.createElement("h1");
+const cnt0 = document.getElementById("cnt0");
+const cnt1 = document.getElementById("cnt1");
+const cnt2 = document.getElementById("cnt2");
+const cnt3 = document.getElementById("cnt3");
 
 const slicesContainer = document.querySelector(".slices-container");
 const slice = document.querySelectorAll(".slice");
@@ -78,7 +55,6 @@ const menuPage = document.querySelector(".menu-page");
 const menuLink = document.querySelectorAll(".menu-link");
 
 const descriptionBtnContainer = document.querySelector(".description-btn-container");
-//const descriptionBtn = document.querySelectorAll(".description-btn");
 const descriptionBtnCurr = document.querySelector(".description-btn.curr");
 const descriptionBtnNext = document.querySelector(".description-btn.next");
 const descriptionBtnPrev = document.querySelector(".description-btn.prev");
@@ -88,19 +64,6 @@ const bgText = document.querySelectorAll(".bg-text");
 
 const cursorContainer = document.querySelector(".cursor-container");
 const cursor = document.querySelector(".cursor");
-
-var startTime, endTime;
-
-function start() {
-	startTime = new Date();
-}
-
-function end() {
-	endTime = new Date();
-	var timeDiff = endTime - startTime;
-	var milis = Math.round(timeDiff);
-	console.log(milis + " miliseconds");
-}
 
 // SECTION --------------INTRO--------------
 
@@ -112,25 +75,14 @@ function revealPageElementsAlt() {
 	languageBtn.innerHTML = "<div><span>" + languageBtn.textContent.trim().split("").join("</span><span>").replace(/\s/g, "&nbsp;") + "</span></div>";
 	menuBtn.innerHTML = "<div><span>" + menuBtn.textContent.trim().split("").join("</span><span>").replace(/\s/g, "&nbsp;") + "</span></div>";
 	descriptionBtnCurr.innerHTML = "<h1><i>" + optionsDesc[k].trim().split("").join("</i><i>").replace(/\s/g, "&nbsp;") + "</i></h1>";
-
-	setTimeout(() => {
-		logoBtnContainer.style.display = "flex";
-		languageBtnContainer.style.display = "flex";
-		menuBtnContainer.style.display = "flex";
-		descriptionBtnContainer.style.display = "flex";
-		landingPage.style.visibility = "visible";
-	}, 0);
-
-	setTimeout(() => {
-		title.forEach((title) => () => {
-			title.style.visibility = "visible";
-		});
-	}, 0);
 }
 
 window.onload = function() {
 	revealPageElementsAlt();
 };
+
+const compStyle = window.getComputedStyle(document.body);
+console.log(compStyle);
 
 // SECTION --------------CAROUSEL--------------
 
@@ -168,10 +120,8 @@ function nextColors() {
 
 function prevSlideshow() {
 	slideshowContainer.classList.add("prev");
-	//openBtn.classList.add("prev");
 	setTimeout(() => {
 		slideshowContainer.classList.remove("prev");
-		//openBtn.classList.remove("prev");
 	}, timeChangeSlide);
 
 	logoBtn.innerHTML = "<div><span>" + "Bratan".trim().split("").join("</span><span>").replace(/\s/g, "&nbsp;") + "</span></div>";
@@ -394,6 +344,7 @@ function prevAll() {
 		k = colors.length;
 	}
 	k = k - 1;
+	localStorage.setItem("j", j);
 	nextSlideshow();
 	changeColors();
 	prevDesc();
@@ -405,6 +356,7 @@ function prevAll() {
 function nextAll() {
 	k = k + 1;
 	k = k % colors.length;
+	localStorage.setItem("j", j);
 	prevSlideshow();
 	changeColors();
 	nextDesc();
@@ -440,8 +392,6 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 
 	changeColors();
 	hideOtherBoxes();
-	openBtn.href = optionsLinks[k];
-	descriptionBtnContainer.href = optionsLinks[k];
 	const boxLeft = document.querySelectorAll("[id^=box-left]");
 	boxLeft[k].style.visibility = ("visible");
 	const boxRight = document.querySelectorAll("[id^=box-right]");
@@ -450,15 +400,11 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 	arrowBtnPrev.addEventListener("click", function() {
 		shiftSlide(-1, "");
 		prevAll();
-		openBtn.href = optionsLinks[k];
-		descriptionBtnContainer.href = optionsLinks[k];
 	});
 
 	arrowBtnNext.addEventListener("click", function() {
 		shiftSlide(1, "");
 		nextAll();
-		openBtn.href = optionsLinks[k];
-		descriptionBtnContainer.href = optionsLinks[k];
 	});
 
 	chaptersContainer.addEventListener("transitionend", checkIndex);
@@ -493,14 +439,10 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 		if (chapterPosFinal - chapterPosInitial < -chapterDragThreshold) {
 			shiftSlide(1, "drag");
 			nextAll();
-			openBtn.href = optionsLinks[k];
-			descriptionBtnContainer.href = optionsLinks[k];
 		}
 		else if (chapterPosFinal - chapterPosInitial > chapterDragThreshold) {
 			shiftSlide(-1, "drag");
 			prevAll();
-			openBtn.href = optionsLinks[k];
-			descriptionBtnContainer.href = optionsLinks[k];
 		}
 		else {
 			chaptersContainer.style.left = chapterPosInitial + "px";
@@ -541,9 +483,10 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 }
 moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBtnNext);
 
-document.addEventListener("wheel", function(e) {
+/* document.addEventListener("wheel", function(e) {
 	e.preventDefault();
-}, { passive: false });
+  e.stopPropagation();
+}, { passive: false }); */
 
 // SECTION --------------PARALLAX--------------
 
@@ -562,8 +505,8 @@ let bgTextLastPosY = 0;
 const allRotSpeed = 0.1;
 
 menuPage.addEventListener("mousemove", function(e) {
-	bgTextPosX = -(window.innerWidth / 2 - e.pageX) / 3000;
-	bgTextPosY = (window.innerHeight / 2 - e.pageY) / 3000;
+	bgTextPosX = -(window.innerWidth / 2 - e.pageX) / Math.floor(Math.random() * 3);
+	bgTextPosY = (window.innerHeight / 2 - e.pageY) / Math.floor(Math.random() * 3);
 });
 
 menuPage.addEventListener("mouseleave", function() {
@@ -572,8 +515,8 @@ menuPage.addEventListener("mouseleave", function() {
 });
 
 languagePage.addEventListener("mousemove", function(e) {
-	bgTextPosX = -(window.innerWidth / 2 - e.pageX) / 3000;
-	bgTextPosY = (window.innerHeight / 2 - e.pageY) / 3000;
+	bgTextPosX = -(window.innerWidth / 2 - e.pageX) / Math.floor(Math.random() * 3);
+	bgTextPosY = (window.innerHeight / 2 - e.pageY) / Math.floor(Math.random() * 3);
 });
 
 languagePage.addEventListener("mouseleave", function() {
@@ -629,40 +572,6 @@ setTimeout(() => {
 
 // SECTION --------------ROUTING--------------
 
-function detectPathName() {
-	if (window.location.pathname == "/developer")
-		j = 0;
-	else if (window.location.pathname == "/projects")
-		j = 1;
-	else if (window.location.pathname == "/about")
-		j = 2;
-	else if (window.location.pathname == "/contact")
-		j = 3;
-}
-
-function detectHistory() {
-	if (historyArray[0] == "/developer")
-		j = 0;
-	else if (historyArray[0] == "/projects")
-		j = 1;
-	else if (historyArray[0] == "/about")
-		j = 2;
-	else if (historyArray[0] == "/contact")
-		j = 3;
-}
-
-function detectRoute() {
-	let route = routes.find(route => route.path == window.location.pathname);
-	if (route.path == "/developer")
-		j = 0;
-	else if (route.path == "/projects")
-		j = 1;
-	else if (route.path == "/about")
-		j = 2;
-	else if (route.path == "/contact")
-		j = 3;
-}
-
 function hideLanguagePage() {
 	Array.from(languageLink).forEach(languageLink => {
 		languageLink.classList.remove("appear");
@@ -709,83 +618,9 @@ function setColorsK() {
 	});
 }
 
-function setColorsJ() {
-	Array.from(slice).forEach(slice => {
-		slice.style.backgroundColor = colorsDark50[j];
-	});
-	contentContainer.style.backgroundColor = colorsDark50[j];
-	contentContainer.style.color = colorsExtra[j];
-	logoBtn.style.color = colorsExtra[j];
-	languageBtn.style.color = colorsExtra[j];
-	descriptionBtnCurr.style.color = colorsExtra[j];
-	menuBtn.style.color = colorsExtra[j];
-	cursor.style.backgroundColor = colorsExtra[j];
-	cursor.style.borderColor = colorsExtra[j];
-	Array.from(bgText).forEach(bgText => {
-		bgText.style.color = colorsExtra[j];
-	});
-	Array.from(menuLink).forEach(menuLink => {
-		menuLink.style.color = colorsExtra[j];
-	});
-}
-
-function addAltTrans() {
-	logoBtn.classList.add("alt");
-	languageBtn.classList.add("alt");
-	menuBtn.classList.add("alt");
-	descriptionBtnCurr.classList.add("alt");
-}
-
-function removeAltTrans() {
-	logoBtn.classList.remove("alt");
-	languageBtn.classList.remove("alt");
-	menuBtn.classList.remove("alt");
-	descriptionBtnCurr.classList.remove("alt");
-}
-
-var openChapterIsRunning = false;
-var goBackHomeIsRunning = false;
-var openNavIsRunning = false;
-var switchChapterIsRunning = false;
-var switchChapterAfterNavIsRunning = false;
-
-var contentTitle;
-// contentTitle.parentNode.removeChild(contentTitle);
-
-function insideOpenChapter() {
-	setColorsJ();
-	addMiddleSlice();
-	slicesContainer.classList.add("appear");
-	setTimeout(() => {
-		routingPage.classList.add("appear");
-		contentContainer.classList.add("appear");
-		contentTitle.classList.add("appear");
-		openChapterIsRunning = false;
-	}, timeToggleSlice);
-}
-function openChapter() {
-	if (!openChapterIsRunning) {
-		openChapterIsRunning = true;
-		if (!goBackHomeIsRunning) {
-			insideOpenChapter();
-		}
-		else {
-			setTimeout(() => {
-				setTimeout(() => {
-					insideOpenChapter();
-				}, timeTogglePage);
-			}, timeToggleSlice);
-		}
-	}
-}
-
 function insideGoBackHome() {
-	let route = routes.find(route => route.path == window.location.pathname);
-	contentTitle.classList.remove("appear");
 	contentContainer.classList.remove("appear");
 	setTimeout(() => {
-		contentTitle.parentNode.removeChild(contentTitle);
-		route.data.generateContent();
 		slicesContainer.classList.remove("appear");
 		routingPage.classList.remove("appear");
 		logoBtn.style.color = colorsExtra[k];
@@ -795,180 +630,17 @@ function insideGoBackHome() {
 		setTimeout(() => {
 			setColorsK();
 			removeMiddleSlice();
-			removeAltTrans();
 			Array.from(slice).forEach(slice => {
 				slice.style.backgroundColor = colorsDark50[k];
 			});
-			goBackHomeIsRunning = false;
 		}, timeToggleSlice);
 	}, timeTogglePage);
 }
 function goBackHome() {
-	if (!goBackHomeIsRunning) {
-		goBackHomeIsRunning = true;
-		if (!openChapterIsRunning) {
-			insideGoBackHome();
-		}
-		else {
-			setTimeout(() => {
-				insideGoBackHome();
-			}, timeToggleSlice);
-		}
-	}
-}
-
-function openChapterAfterNav() {
-	if (!slice[0].classList.contains("middle")) {
-		setTimeout(() => {
-			addAltTrans();
-			setColorsJ();
-		}, timeToggleSlice / 2 + timeTogglePage);
-		setTimeout(() => {
-			addMiddleSlice();
-		}, timeToggleSlice);
-		setTimeout(() => {
-			routingPage.classList.add("appear");
-		}, timeToggleSlice * 2);
-		setTimeout(() => {
-			contentContainer.classList.add("appear");
-			/* addAltTrans();
-			setColorsJ(); */
-		}, timeToggleSlice * 2 + timeTogglePage);
-	}
-	else {
-		addAltTrans();
-		setColorsJ();
-		contentContainer.classList.remove("appear");
-		detectRoute();
-		setTimeout(() => {
-			contentContainer.classList.add("appear");
-		}, timeTogglePage * 3);
-	}
-} // FIX: add functionality for opening a new chapter after one has already been opened + function checks
-
-function goBackHomeAfterNav() {
 	setTimeout(() => {
-		setColorsK();
-	}, timeTogglePage);
-} // FIX: incomplete
-
-function switchChapter() {
-	let route = routes.find(route => route.path == window.location.pathname);
-	if (!switchChapterIsRunning) {
-		switchChapterIsRunning = true;
-		contentTitle.classList.remove("appear");
-		setTimeout(() => {
-			detectRoute();
-			setColorsJ();
-			contentTitle.parentNode.removeChild(contentTitle);
-			route.data.generateContent();
-		}, timeTogglePage);
-		setTimeout(() => {
-			contentTitle.classList.add("appear");
-			switchChapterIsRunning = false;
-		}, timeTogglePage * 2);
-	}
-	else {
-		console.log("add logic here");
-	}
-} // FIX: incomplete logic + animation timing
-
-function switchChapterAfterNav() {
-	if (!switchChapterAfterNavIsRunning) {
-		switchChapterAfterNavIsRunning = true;
-		detectPathName();
-		contentContainer.classList.remove("appear");
-		setTimeout(() => {
-			setColorsJ();
-			contentContainer.classList.add("appear");
-			switchChapterAfterNavIsRunning = false;
-		}, timeToggleSlice);
-	}
-} // FIX: incomplete
-
-function router(event) {
-	event.preventDefault();
-	history.pushState({}, "newUrl", event.target.href);
-	let route = routes.find(route => route.path == window.location.pathname);
-	contentTitle.parentNode.removeChild(contentTitle); // CHECK: add in openChapter
-	route.data.generateContent(); // CHECK: add in openChapter
-	historyArray[0] = route.path;
-	detectRoute();
-	if (slice[0].classList.contains("right")) {
-		hideMenuPage();
-		openChapterAfterNav();
-	}
-	else if (!slice[0].classList.contains("left") && !slice[0].classList.contains("right") && !slice[0].classList.contains("middle")) {
-		setColorsK();
-		openChapter();
-		removeAltTrans();
-	}
+		insideGoBackHome();
+	}, timeToggleSlice);
 }
-
-window.addEventListener("popstate", function() {
-	let route = routes.find(route => route.path == window.location.pathname);
-	if (!slicesContainer.classList.contains("appear")) {
-		contentTitle.parentNode.removeChild(contentTitle); // CHECK: add in openChapter
-		route.data.generateContent(); // CHECK: add in openChapter
-		detectPathName();
-		if (k == j)
-			setColorsK();
-		else if (k != j)
-			setColorsJ();
-		openChapter();
-	}
-	else {
-		detectPathName();
-		if (slice[0].classList.contains("left")) {
-			hideLanguagePage();
-			addMiddleSlice();
-			if (route.path == "/") {
-				setTimeout(() => {
-					setColorsK();
-				}, timeTogglePage);
-				goBackHomeAfterNav();
-			}
-			else
-				switchChapterAfterNav();
-		}
-		else if (slice[0].classList.contains("right")) {
-			// hideMenuPage(); // DO: nu mai dau hide la meniu, ci doar pun o clasa de "active" si schimb instant chapterul; daca userul vrea sa vada chapterul schimbat, va trebui el sa inchida meniul
-			addMiddleSlice();
-			if (route.path == "/")
-				goBackHomeAfterNav();
-			else
-				switchChapterAfterNav();
-		} // FIX: add functionisrunning checks
-		else if (slice[0].classList.contains("middle")) {
-			if (route.path == "/")
-				goBackHome();
-			else
-				switchChapter();
-		}
-	}
-});
-
-window.addEventListener("DOMContentLoaded", function() {
-	openBtn.href = optionsLinks[k];
-	let route = routes.find(route => route.path == window.location.pathname);
-	route.data.generateContent();
-	detectPathName();
-	if (!slicesContainer.classList.contains("appear") && window.location.pathname != "/") {
-		slicesContainer.setAttribute("class", "slices-container appear");
-		routingPage.classList.add("appear");
-		contentContainer.classList.add("appear");
-		contentTitle.classList.add("appear");
-		addMiddleSlice();
-		if (k == j) {
-			setColorsK();
-			routingPage.style.backgroundColor = colorsDark50[j];
-		}
-		else if (k != j) {
-			setColorsJ();
-			routingPage.style.backgroundColor = "transparent";
-		}
-	}
-}); // FIX: when route is different than /developer, the loading transitions are visible instead of instant
 
 // SECTION --------------CLICKING--------------
 
@@ -983,27 +655,11 @@ menuBtnContainer.addEventListener("click", function() {
 		}, timeToggleSlice / 2);
 	}
 	else {
-		if (window.location.pathname != "/") {
-			if (slice[0].classList.contains("middle")) {
-				Array.from(slice).forEach(slice => {
-					slice.classList.remove("middle");
-					slice.classList.add("right");
-				});
-			}
-			else {
-				Array.from(slice).forEach(slice => {
-					slice.classList.remove("right");
-					slice.classList.add("middle");
-				});
-			}
-		}
-		else {
-			addRightSlice();
-			toggleSlices();
-		}
+		addRightSlice();
+		toggleSlices();
 		toggleMenuContent();
 	}
-}); // FIX: cand sunt pe un path diferit de "/" si dau switch intre left si right, culorile nu se schimba cu setColorsJ
+});
 
 languageBtnContainer.addEventListener("click", function() {
 	disablePointerEvents();
@@ -1016,56 +672,19 @@ languageBtnContainer.addEventListener("click", function() {
 		}, timeToggleSlice / 2);
 	}
 	else {
-		if (window.location.pathname != "/") {
-			if (slice[0].classList.contains("middle")) {
-				Array.from(slice).forEach(slice => {
-					slice.classList.remove("middle");
-					slice.classList.add("left");
-				});
-			}
-			else {
-				Array.from(slice).forEach(slice => {
-					slice.classList.remove("left");
-					slice.classList.add("middle");
-				});
-			}
-		}
-		else {
-			addLeftSlice();
-			toggleSlices();
-		}
+		addLeftSlice();
+		toggleSlices();
 		toggleLanguageContent();
 	}
-}); // FIX: cand sunt pe un path diferit de "/" si dau switch intre left si right, culorile nu se schimba cu setColorsJ
+});
 
-function changeColorsAlt1() {
-	Array.from(slice).forEach(slice => {
-		slice.style.backgroundColor = colorsDark50[k];
-	});
-	contentContainer.style.backgroundColor = colorsDark50[k];
-	contentContainer.style.color = colorsExtra[k];
-}
-
-function changeColorsAlt2() {
-	Array.from(slice).forEach(slice => {
-		slice.style.backgroundColor = colorsDark50[j];
-	});
-	if (k == j)
-		routingPage.style.backgroundColor = colorsDark50[j];
-	else {
-		routingPage.style.backgroundColor = "transparent";
-	}
-	contentContainer.style.backgroundColor = colorsDark50[j];
-	contentContainer.style.color = colorsExtra[j];
-	logoBtn.style.color = colorsExtra[j];
-	languageBtn.style.color = colorsExtra[j];
-	descriptionBtnCurr.style.color = colorsExtra[j];
-	menuBtn.style.color = colorsExtra[j];
-	logoBtn.classList.add("alt");
-	languageBtn.classList.add("alt");
-	menuBtn.classList.add("alt");
-	descriptionBtnCurr.classList.add("alt");
-}
+openBtn.addEventListener("click", function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	toggleSlices();
+	addMiddleSlice();
+	toggleChapterContent();
+});
 
 function disablePointerEvents() {
 	languageBtnContainer.style.pointerEvents = "none";
@@ -1146,29 +765,13 @@ function toggleSlices() {
 	}
 }
 
-function toggleSlicesAlt() {
-	if (!slicesContainer.classList.contains("appear"))
-		slicesContainer.setAttribute("class", "slices-container appear");
-	else {
-		setTimeout(() => {
-			slicesContainer.classList.remove("appear");
-		}, timeWaitForBgText);
-	}
-}
-
 function toggleMenuContent() {
 	Array.from(bgText).forEach(bgText => {
 		bgText.textContent = optionsBgText[5];
-		if (k == j)
-			bgText.style.color = colorsExtra[k];
-		else if (k != j)
-			bgText.style.color = colorsExtra[j];
+		bgText.style.color = colorsExtra[k];
 	});
 	Array.from(menuLink).forEach(menuLink => {
-		if (k == j)
-			menuLink.style.color = colorsExtra[k];
-		else if (k != j)
-			menuLink.style.color = colorsExtra[j];
+		menuLink.style.color = colorsExtra[k];
 		if (!menuLink.classList.contains("appear")) {
 			setTimeout(() => {
 				menuLink.classList.add("appear");
@@ -1201,11 +804,12 @@ function toggleMenuContent() {
 			bgTextContainer.classList.remove("appear");
 		}, timeToggleSlice / 2 + timeWaitForBgText);
 	}
-} // FIX: add modifications
+}
 
 function toggleLanguageContent() {
 	Array.from(bgText).forEach(bgText => {
 		bgText.textContent = optionsBgText[5];
+		bgText.style.color = colorsExtra[k];
 	});
 	Array.from(languageLink).forEach(languageLink => {
 		languageLink.style.color = colorsExtra[k];
@@ -1241,13 +845,29 @@ function toggleLanguageContent() {
 			bgTextContainer.classList.remove("appear");
 		}, timeToggleSlice / 2 + timeWaitForBgText);
 	}
-} // FIX: add modifications
+}
 
 function toggleChapterContent() {
 	if (!routingPage.classList.contains("appear")) {
 		routingPage.classList.add("appear");
 		setTimeout(() => {
 			contentContainer.classList.add("appear");
+			if (k == 0) {
+				cnt0.style.display = "block";
+				cnt0.style.color = colorsExtra[k];
+			}
+			else if (k == 1) {
+				cnt1.style.display = "block";
+				cnt1.style.color = colorsExtra[k];
+			}
+			else if (k == 2) {
+				cnt2.style.display = "block";
+				cnt2.style.color = colorsExtra[k];
+			}
+			else if (k == 3) {
+				cnt3.style.display = "block";
+				cnt3.style.color = colorsExtra[k];
+			}
 		}, timeToggleSlice + timeTogglePage);
 	}
 	else {
@@ -1294,7 +914,7 @@ document.addEventListener("mouseenter", function() {
 	cursorContainer.style.opacity = 1;
 });
 
-document.addEventListener("mouseleave", function() {
+document.addEventListener("mouseleave", function(e) {
 	cursorContainer.style.opacity = 0;
 });
 
@@ -1342,89 +962,21 @@ function loopCursorMovement() {
 }
 requestAnimationFrame(loopCursorMovement);
 
-// SECTION --------------CODE GRAVEYARD - TURN BACK!!!--------------
+// SECTION --------------VALIDATION--------------
 
-// contentContainer.innerHTML = route.data;
-// routingPage.appendChild(contentContainer);
+function validateForm() {
+	var username = document.getElementById("username").value;
+	var email = document.getElementById("email").value;
 
-/* setTimeout(() => {
-	// route.data.generateContent();
-}, timeToggleSlice + timeTogglePage);
-disablePointerEvents();
-addMiddleSlice();
-toggleSlices();
-toggleChapterContent();
-if (window.location.pathname === openBtn.pathname)
-	changeColorsAlt1();
-else if (window.location.pathname === history[0])
-	changeColorsAlt2();
-else if (window.location.pathname == "") {
-	logoBtn.style.color = colorsExtra[k];
-	languageBtn.style.color = colorsExtra[k];
-	descriptionBtnCurr.style.color = colorsExtra[k];
-	menuBtn.style.color = colorsExtra[k];
-	setTimeout(() => {
-		logoBtn.classList.remove("alt");
-		languageBtn.classList.remove("alt");
-		menuBtn.classList.remove("alt");
-		descriptionBtnCurr.classList.remove("alt");
-	}, timeToggleSlice + timeTogglePage);
-} */
-
-/* setTimeout(() => {
-	// route.data.generateContent();
-}, timeToggleSlice + timeTogglePage);
-if (!slicesContainer.classList.contains("appear")) {
-	toggleSlices();
-	addMiddleSlice();
-	changeColorsAlt2();
-	setTimeout(() => {
-		contentContainer.innerHTML = data.data;
-		toggleChapterContent();
-		disablePointerEvents();
-		detectPathName();
-		detectHistory();
-	}, timeToggleSlice + timeTogglePage);
-}
-else {
-	contentContainer.innerHTML = data.data;
-	disablePointerEvents();
-	addMiddleSlice();
-	toggleSlices();
-	toggleChapterContent();
-	detectPathName();
-	detectHistory();
-	logoBtn.style.color = colorsExtra[k];
-	languageBtn.style.color = colorsExtra[k];
-	descriptionBtnCurr.style.color = colorsExtra[k];
-	menuBtn.style.color = colorsExtra[k];
-	setTimeout(() => {
-		logoBtn.classList.remove("alt");
-		languageBtn.classList.remove("alt");
-		menuBtn.classList.remove("alt");
-		descriptionBtnCurr.classList.remove("alt");
-	}, timeToggleSlice + timeTogglePage);
-} */
-
-/* window.addEventListener("locationchange", function() {
-	disablePointerEvents();
-	addMiddleSlice();
-	toggleSlices();
-	toggleChapterContent();
-	if (window.location.pathname === openBtn.pathname)
-		changeColorsAlt1();
-	else if (window.location.pathname === history[0])
-		changeColorsAlt2();
-	else if (window.location.pathname == "") {
-		logoBtn.style.color = colorsExtra[k];
-		languageBtn.style.color = colorsExtra[k];
-		descriptionBtnCurr.style.color = colorsExtra[k];
-		menuBtn.style.color = colorsExtra[k];
-		setTimeout(() => {
-			logoBtn.classList.remove("alt");
-			languageBtn.classList.remove("alt");
-			menuBtn.classList.remove("alt");
-			descriptionBtnCurr.classList.remove("alt");
-		}, timeToggleSlice + timeTogglePage);
+	if (username === "") {
+		alert("Username is required.");
+		return false;
 	}
-}); */
+
+	if (email === "") {
+		alert("Email is required.");
+		return false;
+	}
+
+	return true;
+}

@@ -2,324 +2,458 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="https://github.githubassets.com/favicons/favicon.svg" />
-	<title>Vanilla JS Router Test</title>
-	<meta name="title" content="Vanilla JS Router Test">
-	<link rel="stylesheet" href="/styles/index.css" type="text/css">
-	<!-- <noscript>
-		<link rel="stylesheet" href="/styles/index.noscript.css" />
-	</noscript> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://github.githubassets.com/favicons/favicon.svg" />
+  <title>Vanilla JS Router Test</title>
+  <meta name="title" content="Vanilla JS Router Test">
+  <link rel="stylesheet" href="/styles/index.css" type="text/css">
+  <noscript>
+    <link rel="stylesheet" href="/styles/index.noscript.css" />
+  </noscript>
 </head>
 
 <body>
-	<!-- SECTION: --------------MAIN-------------- -->
-	<main id="landing-page">
-		<div class="bg-image im1"></div>
-		<div class="bg-image im2"></div>
-		<div class="boxes-scene">
-			<div class="box1" id="box-left1">
-				<div class="box-shape b1">
-					<div class="face ft"></div>
-					<div class="face lt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box2" id="box-right1">
-				<div class="box-shape b2">
-					<div class="face ft"></div>
-					<div class="face rt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box1" id="box-left2">
-				<div class="box-shape b1">
-					<div class="face ft"></div>
-					<div class="face lt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box2" id="box-right2">
-				<div class="box-shape b2">
-					<div class="face ft"></div>
-					<div class="face rt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box1" id="box-left3">
-				<div class="box-shape b1">
-					<div class="face ft"></div>
-					<div class="face lt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box2" id="box-right3">
-				<div class="box-shape b2">
-					<div class="face ft"></div>
-					<div class="face rt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box1" id="box-left4">
-				<div class="box-shape b1">
-					<div class="face ft"></div>
-					<div class="face lt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-			<div class="box2" id="box-right4">
-				<div class="box-shape b2">
-					<div class="face ft"></div>
-					<div class="face rt"></div>
-					<div class="face bm"></div>
-				</div>
-			</div>
-		</div>
-		<div id="slideshow-container" class="slideshow-container">
-			<div class="slideshow-wrapper">
-				<div id="chapters-container" class="chapters-container">
-					<div class="chapter">
-						<span class="title white">
-							<p>I am a</p>
-							<h1>Developer</h1>
-						</span>
-					</div>
-					<div class="chapter">
-						<span class="title black">
-							<p>Discover my</p>
-							<h1>Projects</h1>
-						</span>
-					</div>
-					<div class="chapter">
-						<span class="title white">
-							<p>Find out more</p>
-							<h1>About me</h1>
-						</span>
-					</div>
-					<div class="chapter">
-						<span class="title black">
-							<p>Available for</p>
-							<h1>Contact</h1>
-						</span>
-					</div>
-				</div>
-			</div>
-			<span class="arrow-btn-prev-container">
-				<div id="arrow-btn-prev" class="arrow-btn-prev"></div>
-			</span>
-			<span class="arrow-btn-next-container">
-				<div id="arrow-btn-next" class="arrow-btn-next"></div>
-			</span>
-		</div>
-		<span class="counter-btn">1 / 4</span>
-		<a class="open-btn" href="/" onclick="router(event)">Open</a>
-	</main>
-	<main id="routing-page">
-		<div class="content-container"></div>
-	</main>
+  <!-- SECTION: -------------- MAIN -------------- -->
+  <main id="landing-page">
 
-	<!-- SECTION: --------------UNIVERSAL SLICES-------------- -->
-	<div class="slices-container">
-		<div class="slice"></div>
-		<div class="slice"></div>
-		<div class="slice"></div>
-		<div class="slice"></div>
-		<div class="slice"></div>
-	</div>
+    <!-- IMAGES -->
+    <div class="bg-image im1"></div>
+    <div class="bg-image im2"></div>
 
-	<!-- SECTION: --------------UNIVERSAL ACCESSIBILITY PAGES-------------- -->
-	<div class="bg-text-container">
-		<span class="bg-text-wrapper">
-			<span class="bg-text"></span>
-		</span>
-		<span class="bg-text-wrapper">
-			<span class="bg-text"></span>
-		</span>
-		<span class="bg-text-wrapper">
-			<span class="bg-text"></span>
-		</span>
-	</div>
-	<div class="menu-page">
-		<span class="menu-option">
-			<a class="menu-link" href="/developer" onclick="router(event)">Developer</a>
-		</span>
-		<span class="menu-option">
-			<a class="menu-link" href="/projects" onclick="router(event)">Projects</a>
-		</span>
-		<span class="menu-option">
-			<a class="menu-link" href="/about" onclick="router(event)">About me</a>
-		</span>
-		<span class="menu-option">
-			<a class="menu-link" href="/contact" onclick="router(event)">Contact</a>
-		</span>
-	</div>
-	<div class="language-page">
-		<span class="language-option">
-			<a class="language-link">Romanian</a>
-		</span>
-		<span class="language-option">
-			<a class="language-link">English</a>
-		</span>
-		<span class="language-option">
-			<a class="language-link">French</a>
-		</span>
-		<span class="language-option">
-			<a class="language-link">Italian</a>
-		</span>
-	</div>
+    <!-- 3D SHAPES -->
+    <div class="boxes-scene">
+      <div class="box1" id="box-left1">
+        <div class="box-shape b1">
+          <div class="face ft"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box2" id="box-right1">
+        <div class="box-shape b2">
+          <div class="face ft"></div>
+          <div class="face rt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box1" id="box-left2">
+        <div class="box-shape b1">
+          <div class="face ft"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box2" id="box-right2">
+        <div class="box-shape b2">
+          <div class="face ft"></div>
+          <div class="face rt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box1" id="box-left3">
+        <div class="box-shape b1">
+          <div class="face ft"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box2" id="box-right3">
+        <div class="box-shape b2">
+          <div class="face ft"></div>
+          <div class="face rt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box1" id="box-left4">
+        <div class="box-shape b1">
+          <div class="face ft"></div>
+          <div class="face lt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+      <div class="box2" id="box-right4">
+        <div class="box-shape b2">
+          <div class="face ft"></div>
+          <div class="face rt"></div>
+          <div class="face bm"></div>
+        </div>
+      </div>
+    </div>
 
-	<!-- SECTION: --------------UNIVERSAL DETAILS-------------- -->
-	<a class="logo-btn-container" href="/">
-		<span class="logo-btn">Bratan</span>
-	</a>
-	<a class="description-btn-container" href="#">
-		<span class="description-btn prev"></span>
-		<span class="description-btn curr"></span>
-		<span class="description-btn next"></span>
-	</a>
-	<div class="language-btn-container">
-		<span class="language-btn">⚑ Lang</span>
-	</div>
-	<div class="menu-btn-container">
-		<span class="menu-btn">Menu ☰</span>
-	</div>
+    <!-- SLIDESHOW -->
+    <div id="slideshow-container" class="slideshow-container">
+      <div class="slideshow-wrapper">
+        <div id="chapters-container" class="chapters-container">
+          <div class="chapter">
+            <span class="title white">
+              <p>I am a</p>
+              <h1>Developer</h1>
+            </span>
+          </div>
+          <div class="chapter">
+            <span class="title black">
+              <p>Discover my</p>
+              <h1>Projects</h1>
+            </span>
+          </div>
+          <div class="chapter">
+            <span class="title white">
+              <p>Find out more</p>
+              <h1>About me</h1>
+            </span>
+          </div>
+          <div class="chapter">
+            <span class="title black">
+              <p>Available for</p>
+              <h1>Contact</h1>
+            </span>
+          </div>
+        </div>
+      </div>
+      <span class="arrow-btn-prev-container">
+        <div id="arrow-btn-prev" class="arrow-btn-prev"></div>
+      </span>
+      <span class="arrow-btn-next-container">
+        <div id="arrow-btn-next" class="arrow-btn-next"></div>
+      </span>
+    </div>
 
-	<!-- SECTION: --------------CURSOR-------------- -->
-	<div class="cursor-container">
-		<div class="cursor"></div>
-	</div>
+    <!-- TEXT AND BUTTONS ON THE MARGINS -->
+    <a class="logo-btn-container" href="">
+      <span class="logo-btn">Bratan</span>
+    </a>
+    <a class="description-btn-container" href="">
+      <span class="description-btn prev"></span>
+      <span class="description-btn curr"></span>
+      <span class="description-btn next"></span>
+    </a>
+    <div class="language-btn-container">
+      <span class="language-btn">⚑ Lang</span>
+    </div>
+    <div class="menu-btn-container">
+      <span class="menu-btn">Menu ☰</span>
+    </div>
+    <span class="counter-btn">1 / 4</span>
+    <a class="open-btn">Open</a>
 
-	<!-- SECTION: --------------UNIVERSAL NOSCRIPT-------------- -->
-	<noscript>
-		<main class="ns-slideshow-container">
-			<div class="ns-slideshow-wrapper">
-				<input type="radio" name="switcher" class="switcher" id="developer" checked="checked" />
-				<input type="radio" name="switcher" class="switcher" id="projects" />
-				<input type="radio" name="switcher" class="switcher" id="about" />
-				<input type="radio" name="switcher" class="switcher" id="contact" />
+    <!-- ANIMATED SLICES -->
+    <div class="slices-container">
+      <div class="slice"></div>
+      <div class="slice"></div>
+      <div class="slice"></div>
+      <div class="slice"></div>
+      <div class="slice"></div>
+    </div>
 
-				<div class="ns-controls-container">
-					<label class="ns-control prev" for="contact"></label>
-					<label class="ns-control next" for="projects"></label>
-				</div>
-				<div class="ns-controls-container">
-					<label class="ns-control prev" for="developer"></label>
-					<label class="ns-control next" for="about"></label>
-				</div>
-				<div class="ns-controls-container">
-					<label class="ns-control prev" for="projects"></label>
-					<label class="ns-control next" for="contact"></label>
-				</div>
-				<div class="ns-controls-container">
-					<label class="ns-control prev" for="about"></label>
-					<label class="ns-control next" for="developer"></label>
-				</div>
+    <!-- BG TEXT -->
+    <div class="bg-text-container">
+      <span class="bg-text-wrapper">
+        <span class="bg-text"></span>
+      </span>
+      <span class="bg-text-wrapper">
+        <span class="bg-text"></span>
+      </span>
+      <span class="bg-text-wrapper">
+        <span class="bg-text"></span>
+      </span>
+    </div>
 
-				<span class="ns-arrow-btn prev"></span>
-				<span class="ns-arrow-btn next"></span>
+    <!-- MENU PAGE -->
+    <div class="menu-page">
+      <span class="menu-option">
+        <a class="menu-link" href="" onclick="router(event)">Developer</a>
+      </span>
+      <span class="menu-option">
+        <a class="menu-link" href="" onclick="router(event)">Projects</a>
+      </span>
+      <span class="menu-option">
+        <a class="menu-link" href="" onclick="router(event)">About me</a>
+      </span>
+      <span class="menu-option">
+        <a class="menu-link" href="" onclick="router(event)">Contact</a>
+      </span>
+    </div>
 
-				<div class="ns-chapters-container">
-					<li class="ns-chapter">
-						<span class="ns-title white">
-							<p>I am a ...</p>
-							<h1>Developer</h1>
-						</span>
-						<a class="ns-open-btn" href="#">Open</a>
-					</li>
-					<li class="ns-chapter">
-						<span class="ns-title black">
-							<p>Discover my ...</p>
-							<h1>Projects</h1>
-						</span>
-						<a class="ns-open-btn" href="#">Open</a>
-					</li>
-					<li class="ns-chapter">
-						<span class="ns-title white">
-							<p>Find out more ...</p>
-							<h1>About me</h1>
-						</span>
-						<a class="ns-open-btn" href="#">Open</a>
-					</li>
-					<li class="ns-chapter">
-						<span class="ns-title black">
-							<p>Available for ...</p>
-							<h1>Contact</h1>
-						</span>
-						<a class="ns-open-btn" href="#">Open</a>
-					</li>
-				</div>
+    <!-- LANGUAGE PAGE -->
+    <div class="language-page">
+      <span class="language-option">
+        <a class="language-link">Romanian</a>
+      </span>
+      <span class="language-option">
+        <a class="language-link">English</a>
+      </span>
+      <span class="language-option">
+        <a class="language-link">French</a>
+      </span>
+      <span class="language-option">
+        <a class="language-link">Italian</a>
+      </span>
+    </div>
+  </main>
 
-				<div class="ns-bg-duotone-container">
-					<div class="ns-bg-duotone"></div>
-				</div>
+  <!-- SECTION: -------------- ROUTING -------------- -->
+  <div id="routing-page">
+    <div class="content-container">
+      <div id="cnt0">
+        <h1>I am a developer</h1>
 
-				<div class="ns-boxes-scene">
-					<div class="ns-box-shape box1">
-						<div class="face ft"></div>
-						<div class="face lt"></div>
-						<div class="face bm"></div>
-					</div>
-					<div class="ns-box-shape box2">
-						<div class="face ft"></div>
-						<div class="face rt"></div>
-						<div class="face bm"></div>
-					</div>
-				</div>
+        <p>
+          In 9th grade, my journey into the world of web development began when my father suggested that I give it a
+          try.
+          Intrigued by the idea, I delved into the realm of HTML, CSS, and JavaScript, eager to explore this exciting
+          field. What
+          started as a mere suggestion soon turned into a passion that consumed my free time. I spent countless hours
+          tinkering
+          with code, designing websites, and solving puzzles to enhance my skills. Little did I know at the time that
+          this humble
+          beginning would pave the way for a remarkable path ahead.
+        </p>
 
-				<span class="ns-logo-btn">Bratan</span>
-				<span class="ns-description-btn">No JS?</span>
-				<span class="ns-language-btn">⚑ Lang</span>
-				<input type="checkbox" name="activator" class="activator" id="ns-menu-btn" />
-				<label class="ns-menu-btn" for="ns-menu-btn">Menu ☰</label>
+        <p>
+          As my proficiency grew, I sought ways to showcase my progress and creations. I decided to create a CodePen
+          portfolio,
+          which served as a virtual canvas for my projects. With each passing week, my portfolio flourished with dozens
+          of
+          projects, ranging from simple websites to interactive web applications. The platform became an invaluable tool
+          for not
+          only exhibiting my skills but also learning from other talented developers within the community. The feedback
+          and
+          support I received fueled my motivation to keep pushing the boundaries of what I could achieve.
+        </p>
 
-				<div class="ns-slices-container">
-					<div class="ns-slice right"></div>
-					<div class="ns-slice right"></div>
-					<div class="ns-slice right"></div>
-					<div class="ns-slice right"></div>
-					<div class="ns-slice right"></div>
-				</div>
+        <p>
+          While web development was my initial focus, my curiosity led me to explore other avenues in the realm of
+          programming. I
+          found myself drawn to the world of mobile app development, specifically Android apps, and soon started
+          experimenting
+          with Java and Kotlin. The thrill of creating something tangible that could be used and enjoyed by others was
+          exhilarating. Additionally, I ventured into the realm of video game development, using Unity and C# to bring
+          my
+          imagination to life. These new ventures broadened my skill set and provided me with a deeper understanding of
+          different
+          programming paradigms.
+        </p>
 
-				<div class="ns-bg-text-container">
-					<span class="ns-bg-text-wrapper">
-						<span class="ns-bg-text">MenuMenuMenu</span>
-					</span>
-					<span class="ns-bg-text-wrapper">
-						<span class="ns-bg-text">MenuMenuMenu</span>
-					</span>
-					<span class="ns-bg-text-wrapper">
-						<span class="ns-bg-text">MenuMenuMenu</span>
-					</span>
-				</div>
+        <p>
+          One of the most significant milestones in my journey was the development of a complex website that consumed an
+          entire
+          year of my time and dedication. The project demanded meticulous planning, an eye for design, and an unwavering
+          commitment to delivering a seamless user experience. From wireframing and prototyping to implementing
+          intricate
+          functionalities, every step brought both challenges and triumphs. As the website finally came to life, it
+          stood as a
+          testament to my growth as a developer and my ability to persevere through long-term projects. The satisfaction
+          of seeing
+          users interact with and benefit from the website was immeasurable, making every minute of hard work
+          worthwhile.
+        </p>
+      </div>
+      <div id="cnt1">
+        <h1>All my projects</h1>
 
-				<nav class="ns-menu-page-container">
-					<ul class="ns-menu-page-wrapper">
-						<li class="ns-menu-option">
-							<a class="ns-menu-link" href="#0">Developer</a>
-						</li>
-						<li class="ns-menu-option">
-							<a class="ns-menu-link" href="#0">Projects</a>
-						</li>
-						<li class="ns-menu-option">
-							<a class="ns-menu-link" href="#0">About me</a>
-						</li>
-						<li class="ns-menu-option">
-							<a class="ns-menu-link" href="#0">Contact</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</main>
-	</noscript>
+        <p>Throughout the years I developed plenty of projects. Here are some of them.</p>
 
-	<script src="/scripts/views/home.js" type="text/javascript"></script>
-	<script src="/scripts/views/developer.js" type="text/javascript"></script>
-	<script src="/scripts/views/projects.js" type="text/javascript"></script>
-	<script src="/scripts/views/about.js" type="text/javascript"></script>
-	<script src="/scripts/views/contact.js" type="text/javascript"></script>
-	<script src="/scripts/router.js" type="text/javascript"></script>
+        <p>
+          * <a href="https://codepen.io/RaduBratan">CodePen portfolio</a>
+        </p>
+
+        <p>
+          * <a href="https://github.com/RaduBratan/Emulair">Emulair</a>
+        </p>
+
+        <p>
+          * <a href="https://github.com/RaduBratan/Wildpeppers">Wildpeppers</a>
+        </p>
+        
+        <p>
+          * <a href="https://github.com/RaduBratan/TypeScript-RayTracing-Algorithm">TypeScript RayTracing Algorithm</a>
+        </p>
+      </div>
+      <div id="cnt2">
+        <h1>About me</h1>
+        
+        <p>
+          As a dedicated student at the prestigious University of Bucharest, Faculty of Mathematics and Informatics, I am immersed
+          in a world of knowledge and intellectual exploration. Being part of this esteemed institution allows me to pursue my
+          passion for mathematics and computer science while learning from some of the brightest minds in the field. The rigorous
+          curriculum and challenging projects have honed my analytical thinking and problem-solving abilities, equipping me with
+          the skills necessary to thrive in the ever-evolving world of technology.
+        </p>
+        
+        <p>
+          Hailing from Romania, a country rich in history and culture, I was born and currently reside in this beautiful land.
+          Growing up in Romania has given me a deep appreciation for its traditions, folklore, and vibrant landscapes. It is a
+          place where old meets new, where ancient castles coexist with modern cities. The diverse and welcoming nature of Romania
+          has shaped my worldview and fostered a sense of pride in my roots.
+        </p>
+        
+        <p>
+          Beyond academics, I find solace and inspiration in various hobbies that enrich my life. Playing video games has been a
+          beloved pastime of mine, allowing me to immerse myself in captivating virtual worlds and experience thrilling
+          adventures. Additionally, I have developed a passion for creating digital art, utilizing various software and tools to
+          bring my imagination to life. This form of self-expression allows me to channel my creativity and bring forth visually
+          captivating pieces. When I want to unwind and relax, I often find myself indulging in the world of cinema, exploring a
+          wide range of genres and appreciating the storytelling prowess of talented filmmakers. Movies provide me with a means of
+          escapism and a source of inspiration for my own creative endeavors.
+        </p>
+      </div>
+      <div id="cnt3">
+        <h1>Contact me</h1>
+
+        <p>Here are some of my socials. Feel free to contact me in any way. Below you will find an e-mail form.</p>
+        
+        <p>
+          * <a href="https://www.linkedin.com/in/radu-bratan/">LinkedIn</a>
+        </p>
+
+        <p>
+          * <a href="https://github.com/RaduBratan/">GitHub</a>
+        </p>
+
+        <p>
+          * <a href="instagram.com/r.adu.b/">Instagram</a>
+        </p>
+
+        <form onsubmit="return validateForm()">
+          <input type="text" id="username" name="username">
+          <input type="email" id="email" name="email">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: -------------- CURSOR -------------- -->
+  <div class="cursor-container">
+    <div class="cursor"></div>
+  </div>
+
+  <!-- SECTION: -------------- NOSCRIPT -------------- -->
+  <noscript>
+    <main class="ns-slideshow-container">
+      <div class="ns-slideshow-wrapper">
+        <input type="radio" name="switcher" class="switcher" id="developer" checked="checked" />
+        <input type="radio" name="switcher" class="switcher" id="projects" />
+        <input type="radio" name="switcher" class="switcher" id="about" />
+        <input type="radio" name="switcher" class="switcher" id="contact" />
+
+        <div class="ns-controls-container">
+          <label class="ns-control prev" for="contact"></label>
+          <label class="ns-control next" for="projects"></label>
+        </div>
+        <div class="ns-controls-container">
+          <label class="ns-control prev" for="developer"></label>
+          <label class="ns-control next" for="about"></label>
+        </div>
+        <div class="ns-controls-container">
+          <label class="ns-control prev" for="projects"></label>
+          <label class="ns-control next" for="contact"></label>
+        </div>
+        <div class="ns-controls-container">
+          <label class="ns-control prev" for="about"></label>
+          <label class="ns-control next" for="developer"></label>
+        </div>
+
+        <span class="ns-arrow-btn prev"></span>
+        <span class="ns-arrow-btn next"></span>
+
+        <div class="ns-chapters-container">
+          <li class="ns-chapter">
+            <span class="ns-title white">
+              <p>I am a ...</p>
+              <h1>Developer</h1>
+            </span>
+            <a class="ns-open-btn" href="#">Open</a>
+          </li>
+          <li class="ns-chapter">
+            <span class="ns-title black">
+              <p>Discover my ...</p>
+              <h1>Projects</h1>
+            </span>
+            <a class="ns-open-btn" href="#">Open</a>
+          </li>
+          <li class="ns-chapter">
+            <span class="ns-title white">
+              <p>Find out more ...</p>
+              <h1>About me</h1>
+            </span>
+            <a class="ns-open-btn" href="#">Open</a>
+          </li>
+          <li class="ns-chapter">
+            <span class="ns-title black">
+              <p>Available for ...</p>
+              <h1>Contact</h1>
+            </span>
+            <a class="ns-open-btn" href="#">Open</a>
+          </li>
+        </div>
+
+        <div class="ns-bg-duotone-container">
+          <div class="ns-bg-duotone"></div>
+        </div>
+
+        <div class="ns-boxes-scene">
+          <div class="ns-box-shape box1">
+            <div class="face ft"></div>
+            <div class="face lt"></div>
+            <div class="face bm"></div>
+          </div>
+          <div class="ns-box-shape box2">
+            <div class="face ft"></div>
+            <div class="face rt"></div>
+            <div class="face bm"></div>
+          </div>
+        </div>
+
+        <span class="ns-logo-btn">Bratan</span>
+        <span class="ns-description-btn">No JS?</span>
+        <span class="ns-language-btn">⚑ Lang</span>
+        <input type="checkbox" name="activator" class="activator" id="ns-menu-btn" />
+        <label class="ns-menu-btn" for="ns-menu-btn">Menu ☰</label>
+
+        <div class="ns-slices-container">
+          <div class="ns-slice right"></div>
+          <div class="ns-slice right"></div>
+          <div class="ns-slice right"></div>
+          <div class="ns-slice right"></div>
+          <div class="ns-slice right"></div>
+        </div>
+
+        <div class="ns-bg-text-container">
+          <span class="ns-bg-text-wrapper">
+            <span class="ns-bg-text">MenuMenuMenu</span>
+          </span>
+          <span class="ns-bg-text-wrapper">
+            <span class="ns-bg-text">MenuMenuMenu</span>
+          </span>
+          <span class="ns-bg-text-wrapper">
+            <span class="ns-bg-text">MenuMenuMenu</span>
+          </span>
+        </div>
+
+        <nav class="ns-menu-page-container">
+          <ul class="ns-menu-page-wrapper">
+            <li class="ns-menu-option">
+              <a class="ns-menu-link" href="#0">Developer</a>
+            </li>
+            <li class="ns-menu-option">
+              <a class="ns-menu-link" href="#0">Projects</a>
+            </li>
+            <li class="ns-menu-option">
+              <a class="ns-menu-link" href="#0">About me</a>
+            </li>
+            <li class="ns-menu-option">
+              <a class="ns-menu-link" href="#0">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+  </noscript>
+
+  <script src="/scripts/index.js" type="text/javascript"></script>
 </body>
 
 </html>
