@@ -28,10 +28,10 @@ NAMING CONVENTION:
 
 // FIX: add 0.085s to every time-change-slide animation
 
-@font-face {
+/* @font-face {
 	font-family: Cartridge Bold;
 	src: url("/assets/Cartridge-Bold.ttf") format("truetype");
-}
+} */
 
 :root {
 	--color: #4a5899;
@@ -2062,9 +2062,9 @@ body {
 
 // ------------------------------------------------------------------------------------------------ \\
 
-// #######################################
-// --------------OPEN BUTTON--------------
-// #######################################
+// ######################################
+// --------OPEN AND CLOSE BUTTONS--------
+// ######################################
 
 .open-btn {
 	width: 10vw;
@@ -2083,6 +2083,26 @@ body {
 	text-transform: uppercase;
 	z-index: 3;
 	cursor: none;
+}
+
+.close-btn {
+  position: relative;
+  width: 10vw;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow-y: hidden;
+	text-transform: uppercase;
+	color: var(--noncolor2);
+	transition: color var(--time-change-slide) var(--cubic-bezier1);
+	outline: none;
+	font-size: var(--size-text-small);
+	text-transform: uppercase;
+	z-index: 3;
+	cursor: none;
+  transform: translateX(50vw - 5vw);
+  padding: 3rem;
 }
 
 // ------------------------------------------------------------------------------------------------ \\
@@ -2306,7 +2326,30 @@ body {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
+  #create,
+  #remove {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    opacity: .5;
+    cursor: pointer;
+    padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 13rem;
+
+    &:nth-of-type(2) {
+      margin-left: 3rem;
+    }
+  }
 }
+
+
 
 // ------------------------------------------------------------------------------------------------ \\
 

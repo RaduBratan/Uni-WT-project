@@ -28,6 +28,11 @@ const chaptersContainer = document.getElementById("chapters-container");
 const arrowBtnPrev = document.getElementById("arrow-btn-prev");
 const arrowBtnNext = document.getElementById("arrow-btn-next");
 const openBtn = document.querySelector(".open-btn");
+const closeBtn = document.querySelectorAll(".close-btn");
+const cbtn0 = document.getElementById("cbtn0");
+const cbtn1 = document.getElementById("cbtn1");
+const cbtn2 = document.getElementById("cbtn2");
+const cbtn3 = document.getElementById("cbtn3");
 const counterBtn = document.querySelector(".counter-btn");
 const landingPage = document.getElementById("landing-page");
 const routingPage = document.getElementById("routing-page");
@@ -61,6 +66,8 @@ const descriptionBtnPrev = document.querySelector(".description-btn.prev");
 
 const bgTextContainer = document.querySelector(".bg-text-container");
 const bgText = document.querySelectorAll(".bg-text");
+
+// const form = document.getElementById("form");
 
 const cursorContainer = document.querySelector(".cursor-container");
 const cursor = document.querySelector(".cursor");
@@ -344,6 +351,7 @@ function prevAll() {
 		k = colors.length;
 	}
 	k = k - 1;
+	j = k;
 	localStorage.setItem("j", j);
 	nextSlideshow();
 	changeColors();
@@ -356,6 +364,7 @@ function prevAll() {
 function nextAll() {
 	k = k + 1;
 	k = k % colors.length;
+	j = k;
 	localStorage.setItem("j", j);
 	prevSlideshow();
 	changeColors();
@@ -400,11 +409,25 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 	arrowBtnPrev.addEventListener("click", function() {
 		shiftSlide(-1, "");
 		prevAll();
+		console.log(j);
 	});
 
 	arrowBtnNext.addEventListener("click", function() {
 		shiftSlide(1, "");
 		nextAll();
+		console.log(j);
+	});
+
+	document.addEventListener("keydown", function(e) {
+		if (e.key === "ArrowLeft") {
+			shiftSlide(-1, "");
+			prevAll();
+			console.log(j);
+		} else if (e.key === "ArrowRight") {
+			shiftSlide(1, "");
+			nextAll();
+			console.log(j);
+		}
 	});
 
 	chaptersContainer.addEventListener("transitionend", checkIndex);
@@ -484,7 +507,7 @@ function moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBt
 moveSlider(slideshowContainer, chaptersContainer, arrowBtnPrev, arrowBtnNext);
 
 /* document.addEventListener("wheel", function(e) {
-	e.preventDefault();
+  e.preventDefault();
   e.stopPropagation();
 }, { passive: false }); */
 
@@ -505,7 +528,7 @@ let bgTextLastPosY = 0;
 const allRotSpeed = 0.1;
 
 menuPage.addEventListener("mousemove", function(e) {
-	bgTextPosX = -(window.innerWidth / 2 - e.pageX) / Math.floor(Math.random() * 3);
+	bgTextPosX = -(window.innerWidth / 2 - e.pageX) * Math.floor(Math.random() * 3000000);
 	bgTextPosY = (window.innerHeight / 2 - e.pageY) / Math.floor(Math.random() * 3);
 });
 
@@ -684,6 +707,41 @@ openBtn.addEventListener("click", function(e) {
 	toggleSlices();
 	addMiddleSlice();
 	toggleChapterContent();
+});
+
+[cbtn0, cbtn1, cbtn2, cbtn3].forEach(item => {
+	item.addEventListener("click", function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		toggleSlices();
+		setTimeout(() => {
+			removeMiddleSlice();
+		}, timeToggleSlice + timeTogglePage);
+		toggleChapterContent();
+	});
+});
+
+document.addEventListener("keydown", function(e) {
+	var arrUp = false;
+	var arrDown = false;
+	if (e.key === "ArrowUp" && arrUp == false) {
+		arrDown = true;
+		e.preventDefault();
+		e.stopPropagation();
+		toggleSlices();
+		addMiddleSlice();
+		toggleChapterContent();
+	}
+	if (e.key === "ArrowDown" && arrDown == false) {
+		arrUp = true;
+		e.preventDefault();
+		e.stopPropagation();
+		toggleSlices();
+		setTimeout(() => {
+			removeMiddleSlice();
+		}, timeToggleSlice + timeTogglePage);
+		toggleChapterContent();
+	}
 });
 
 function disablePointerEvents() {
@@ -873,6 +931,18 @@ function toggleChapterContent() {
 	else {
 		routingPage.classList.remove("appear");
 		contentContainer.classList.remove("appear");
+		if (k == 0) {
+			cnt0.style.display = "none";
+		}
+		else if (k == 1) {
+			cnt1.style.display = "none";
+		}
+		else if (k == 2) {
+			cnt2.style.display = "none";
+		}
+		else if (k == 3) {
+			cnt3.style.display = "none";
+		}
 	}
 }
 
@@ -940,7 +1010,7 @@ const animateCursor = () => {
 	cursor.style.transform = `rotate(${angle}deg) scale(calc(1 + ${squeeze}), calc(1 - ${squeeze}))`;
 };
 
-[logoBtnContainer, descriptionBtnContainer, languageBtnContainer, menuBtnContainer, openBtn, arrowBtnNext, arrowBtnPrev].forEach(item => {
+[logoBtnContainer, descriptionBtnContainer, languageBtnContainer, menuBtnContainer, openBtn, cbtn0, cbtn1, cbtn2, cbtn3, arrowBtnNext, arrowBtnPrev].forEach(item => {
 	item.addEventListener("mouseover", function() {
 		cursor.classList.add("hover");
 		cursor.style.width = "4rem";
@@ -948,7 +1018,7 @@ const animateCursor = () => {
 	});
 });
 
-[logoBtnContainer, descriptionBtnContainer, languageBtnContainer, menuBtnContainer, openBtn, arrowBtnNext, arrowBtnPrev].forEach(item => {
+[logoBtnContainer, descriptionBtnContainer, languageBtnContainer, menuBtnContainer, openBtn, cbtn0, cbtn1, cbtn2, cbtn3, arrowBtnNext, arrowBtnPrev].forEach(item => {
 	item.addEventListener("mouseleave", function() {
 		cursor.classList.remove("hover");
 		cursor.style.width = "1.5rem";
@@ -979,4 +1049,59 @@ function validateForm() {
 	}
 
 	return true;
+}
+
+function createElements() {
+	var form = document.createElement("form");
+	form.setAttribute("onsubmit", "return validateForm()");
+	form.setAttribute("id", "form");
+
+	var nameLabel = document.createElement("label");
+	nameLabel.setAttribute("for", "username");
+	nameLabel.innerText = "Name";
+
+	var nameInput = document.createElement("input");
+	nameInput.setAttribute("type", "text");
+	nameInput.setAttribute("id", "username");
+	nameInput.setAttribute("name", "username");
+
+	var countryCodeLabel = document.createElement("label");
+	countryCodeLabel.setAttribute("for", "country-code");
+	countryCodeLabel.innerText = "Country code (e.g. RO)";
+
+	var countryCodeInput = document.createElement("input");
+	countryCodeInput.setAttribute("type", "text");
+	countryCodeInput.setAttribute("id", "country-code");
+	countryCodeInput.setAttribute("name", "country-code");
+	countryCodeInput.setAttribute("pattern", "[A-Za-z]{2}");
+
+	var emailLabel = document.createElement("label");
+	emailLabel.setAttribute("for", "email");
+	emailLabel.innerText = "E-mail";
+
+	var emailInput = document.createElement("input");
+	emailInput.setAttribute("type", "email");
+	emailInput.setAttribute("id", "email");
+	emailInput.setAttribute("name", "email");
+
+	var submitInput = document.createElement("input");
+	submitInput.setAttribute("type", "submit");
+	submitInput.setAttribute("value", "Submit");
+
+	form.appendChild(nameLabel);
+	form.appendChild(nameInput);
+	form.appendChild(countryCodeLabel);
+	form.appendChild(countryCodeInput);
+	form.appendChild(emailLabel);
+	form.appendChild(emailInput);
+	form.appendChild(submitInput);
+
+	cnt3.appendChild(form);
+}
+
+function removeElements() {
+	var form = document.getElementById("form");
+	if (form) {
+		cnt3.removeChild(form);
+	}
 }
